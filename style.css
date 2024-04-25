@@ -1,0 +1,79 @@
+header {
+    width: 100%;
+    height: auto;
+    background-color: rgb(122, 53, 187);
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+
+footer {
+    width: 100%;
+    height: 2%;
+    background-color: rgb(12, 84, 35);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.main {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.left {
+    width: 60%;
+    border: 1px solid black;
+    padding:5px 5px 5px 5px;
+    margin-right: 5px;
+}
+
+.right {
+    width: 40%;
+    border: 1px solid black;
+    padding:5px 5px 5px 5px;
+    margin-left: 5px;
+    
+}
+
+.count-header {
+    text-align: left;
+    font-weight: bold;
+}
+
+.text {
+   vertical-align: top; 
+   width:;
+}
+
+.choice {
+
+}
+
+#wymiary_okraglego {
+    display: none;
+}
+
+#wymiary_kwadratowego {
+    display: none;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title></title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="javaScript.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1> Kalkulator twojej starej </h1>
+    </header>
+
+    <div class="main">
+        <div class="left">
+            <p class="count-header">Dane przemysłowe</p>
+
+            <table class="forma">
+                <tr>
+                    <td class="text">
+                        Przekrój odlewanego wklewka
+                    </td>
+                    <td class="choice">
+                        <input type="radio" id="kwadratowy" name="przekroj" value="kwadratowy">
+                        <label for="kwadratowy"> Kwadratowy/Prostokątny</label><br>
+
+                        <input type="radio" id="okragly" name="przekroj" value="okragly">
+                        <label for="okragly"> Okrągły</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="text">
+                        Wymiary odlewanego wklewka
+                    </td>
+                    <td>
+                        <div id="wymiary_kwadratowego">
+                            Kwadratowy/prostokatny [mm]
+                            <input type="number" id="bokA" placeholder="Bok A">
+                            &times;
+                            <input type="number" id="bokB" placeholder="Bok B">
+
+                        </div>
+                        <div id="wymiary_okraglego">
+                            Okrągły fi [mm]
+                            <input type="number" id="promien" placeholder="Promien">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ilość żył maszyny COS
+                    </td>
+                    <td>
+                        <input type="number" id="zyly" placeholder="Ilość żył"> 
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Liniowa prędkość odlewania [m·min<sup>-1</sup>] 
+                    </td>
+                    <td>
+                        <input type="number" id="liniowaPO" placeholder="Prędkość"> 
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        Gęstość stali w stanie stałym [kg·min<sup>-3</sup>] 
+                    </td>
+                    <td>
+                        <input type="number" id="gestoscSWSS" placeholder="Gęstość"> 
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Gęstość stali w stanie cieklym [kg·min<sup>-3</sup>] 
+                    </td>
+                    <td>
+                        <input type="number" id="gestoscSWSC" placeholder="Gęstość"> 
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Przepływ masowy - urządzenie przemysłowe [kg·min<sup>-3</sup>] 
+                    </td>
+                    <td>
+                        Wynik
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Przepływ objętościowy - urządzenie przemysłowe [kg·min<sup>-3</sup>] 
+                    </td>
+                    <td>
+                        Wynik
+                    </td>
+                </tr>
+
+
+            </table>
+
+        </div>
+
+        <div class="right">
+            <p class="count-header">Dane modelowe</p>
+
+            <table>
+                <tr>
+                    <td>Skala modelu S<sub>I</sub></td>
+                    <td colspan="2"> <input type="number" id="skalaSi" placeholder="Skala"> </td>
+                </tr>
+                <tr rowspan="2">
+                    <td >Przepływ objętościowy cieczy modelowej wody</td>
+                        <td> Wynik </td>
+                        <td> Wynik </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <footer></footer>
+</body>
+
+</html>
