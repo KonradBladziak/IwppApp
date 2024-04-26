@@ -92,7 +92,7 @@
                     <td>
                         Przepływ masowy - urządzenie przemysłowe [kg·min<sup>-3</sup>] 
                     </td>
-                    <td>
+                    <td id="przeplywMasResult">
                         Wynik
                     </td>
                 </tr>
@@ -101,7 +101,7 @@
                     <td>
                         Przepływ objętościowy - urządzenie przemysłowe [kg·min<sup>-3</sup>] 
                     </td>
-                    <td>
+                    <td id="przeplywObjResult">
                         Wynik
                     </td>
                 </tr>
@@ -121,10 +121,10 @@
                 </tr>
                 <tr rowspan="2">
                     <td >Przepływ objętościowy cieczy modelowej wody</td>
-                        <td> Wynik </td>
-                        <td> Wynik </td>
+                        <td id="przeplywObjCieczyMS"> Wynik </td>
+                        <td id="przeplywObjCieczyDmMin"> Wynik </td>
                 </tr>
-
+                <button onclick="NatezeniePrzeplywuCieczy()">Oblicz</button>
 
             </table>
         </div>
