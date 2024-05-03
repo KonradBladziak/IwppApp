@@ -5,13 +5,13 @@ function PrzekrojWlewka()
 
     if (document.getElementById("kwadratowy").checked)
     {
-        var a = document.getElementById("bokA").value;
-        var b = document.getElementById("bokB").value;
+        var a = document.getElementById("bokAMM").value;
+        var b = document.getElementById("bokBMM").value;
         Pp = a * b;
     }
     else if (document.getElementById("okragly").checked)
     {
-        var r = document.getElementById("promien").value;
+        var r = document.getElementById("promienMM").value;
 
         Pp = Math.PI * Math.pow(r, 2);
     }
