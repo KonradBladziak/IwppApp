@@ -8,10 +8,24 @@ function PrzekrojWlewka()
         var a = document.getElementById("bokAMM").value;
         var b = document.getElementById("bokBMM").value;
         Pp = a * b;
+
+        var aMetry = KonwersjaNaMetry(a);
+        var bMetry = KonwersjaNaMetry(b);
+
+        var wynikBokAMetry = document.getElementById("bokAM");
+        var wynikBokBMetry = document.getElementById("bokBM");
+
+        wynikBokAMetry.innerHTML = aMetry.toFixed(3) + " [m]";
+        wynikBokBMetry.innerHTML = bMetry.toFixed(3) + " [m]";
+        
     }
     else if (document.getElementById("okragly").checked)
     {
         var r = document.getElementById("promienMM").value;
+
+        var rMetry = KonwersjaNaMetry(r);
+        var wynikRMetry = document.getElementById("promienM");
+        wynikRMetry.innerHTML = rMetry.toFixed(3) + " [m]";
 
         Pp = Math.PI * Math.pow(r, 2);
     }
@@ -26,6 +40,11 @@ function WydajnoscMasowa()
     var Qm = a * PrzekrojWlewka() * Vodl * Ps;
     var wynikWydajnosc = document.getElementById("przeplywMasResult");
     wynikWydajnosc.innerHTML = Qm.toFixed(1);
+
+    var liniowaPOMetrSekunda = konwersjaNaSekundy(Vodl);
+    var wynikLiniowaPOMetryNaSekunde = document.getElementById("liniowaPOMS")
+    wynikLiniowaPOMetryNaSekunde.innerHTML = liniowaPOMetrSekunda.toFixed(3) + " [m·s<sup>-1</sup>]";
+
     return Qm;
 }
 
@@ -52,7 +71,17 @@ function NatezeniePrzeplywuCieczy()
     return Qvprim;
 }
 
+function KonwersjaNaMetry(wartosc)
+{
+    var wynik = wartosc * 0.001;
+    return wynik;
+}
 
+function konwersjaNaSekundy(wartosc)
+{
+    var wynik = wartosc/60;
+    return wynik;
+}
 
 // Ukrywanie
 document.addEventListener("DOMContentLoaded",function() {
