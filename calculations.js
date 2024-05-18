@@ -106,4 +106,31 @@ document.addEventListener("DOMContentLoaded",function() {
             okraglyDiv.style.display = 'none';
         }
     });
+
+    let button = document.getElementById('readFromCSVbutton');
+    console.log(button);
+    let historialResultsDiv = document.getElementById('historical-results');
+    console.log(historialResultsDiv);
+    button.addEventListener('click', function(){
+        if(this.click){
+            historialResultsDiv.style.visibility = 'visible'
+        }
+        
+    })
+
 });
+
+
+function showHistoricalResultsFromCSV(){
+
+
+}
+
+function saveToCSVFile() {
+
+}
+
+
+function convertCalculationsToCSV(){
+
+}

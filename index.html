@@ -2,10 +2,8 @@
 
 <head>
     <meta charset="utf-8">
-
-    <title></title>
+    <title>Program do obliczeń parametrów procesowych urządzenia COS</title>
     <meta name="description" content="">
-
     <link rel="stylesheet" href="style.css">
     <script src="calculations.js"></script>
     <script src="convert.js"></script>
@@ -17,144 +15,157 @@
     </header>
     <div class="main">
         <div class="left">
-            <p class="count-header">Dane przemysłowe</p>
             <table class="forma">
-                <tr>
-                    <td class="text">
-                        Przekrój odlewanego wklewka
-                    </td>
-                    <td class="choice">
-                        <input type="radio" id="kwadratowy" name="przekroj" value="kwadratowy">
-                        <label for="kwadratowy"> Kwadratowy/Prostokątny</label><br>
-
-                        <input type="radio" id="okragly" name="przekroj" value="okragly">
-                        <label for="okragly"> Okrągły</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text">
-                        Wymiary odlewanego wklewka
-                    </td>
-                    <td>
-                        <div id="wymiary_kwadratowego">
-                            Kwadratowy/prostokatny
-                            <br>
-                            <input type="number" id="bokAMM" placeholder="Bok A">[mm]
-                            &times;
-                            <input type="number" id="bokBMM" placeholder="Bok B">[mm]
-                            <br>
-                            <br>
-                            <div id="bokAM"></div>
-                            &times;
-                            <div id="bokBM"></div>
-                        </div>
-                        <div id="wymiary_okraglego">
-                            Okrągły fi ⌀
-                            <br>
-                            <input type="number" id="promienMM" placeholder="Promien">[mm]
-                            <br>
-                            <br>
-                            <div id="promienM"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Ilość żył maszyny COS
-                    </td>
-                    <td>
-                        <input type="number" id="zyly" placeholder="Ilość żył">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Liniowa prędkość odlewania [m·min<sup>-1</sup>]
-                    </td>
-                    <td>
-                        <input type="number" id="liniowaPO" placeholder="Prędkość">
-                        [m·min<sup>-1</sup>]
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <br>
-                        <div id="liniowaPOMS"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Gęstość stali w stanie stałym [kg·min<sup>-3</sup>]
-                    </td>
-                    <td>
-                        <input type="number" id="gestoscSWSS" placeholder="Gęstość">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Gęstość stali w stanie cieklym [kg·min<sup>-3</sup>]
-                    </td>
-                    <td>
-                        <input type="number" id="gestoscSWSC" placeholder="Gęstość">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Przepływ masowy - urządzenie przemysłowe [kg·min<sup>-3</sup>]
-                    </td>
-                    <td id="przeplywMasResult">
-                        Wynik
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Przepływ objętościowy - urządzenie przemysłowe [kg·min<sup>-3</sup>]
-                    </td>
-                    <td id="przeplywObjResult">
-                        Wynik
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="right">
-            <table>
                 <thead>
-                    <p>Dane modelowe</p>
-                    <button class="calucateButton" onclick="NatezeniePrzeplywuCieczy()">Oblicz</button>
+                    <p class="count-header">Dane przemysłowe</p>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Skala modelu S<sub>I</sub></td>
-                        <td colspan="2">
-                            <input type="number" id="skalaSi" placeholder="Skala">
+                        <td class="description-in-row">
+                            Przekrój odlewanego wklewka
+                        </td>
+                        <td class="choice">
+                            <input type="radio" id="kwadratowy" name="przekroj" value="kwadratowy">
+                            <label for="kwadratowy"> Kwadratowy/Prostokątny</label><br>
+
+                            <input type="radio" id="okragly" name="przekroj" value="okragly">
+                            <label for="okragly"> Okrągły</label>
                         </td>
                     </tr>
-                    <tr rowspan="2">
-                        <td>Przepływ objętościowy cieczy modelowej wody</td>
-                        <td id="przeplywObjCieczyMS"> Wynik [m<sup>3</sup>·s<sup>-1</sup>]</td>
-                        <td id="przeplywObjCieczyDmMin"> Wynik [dm<sup>3</sup>·min<sup>-1</sup>]</td>
+                    <tr>
+                        <td class="description-in-row">
+                            Wymiary odlewanego wklewka
+                        </td>
+                        <td>
+                            <div id="wymiary_kwadratowego">
+                                Kwadratowy/prostokatny
+                                <br>
+                                <input type="number" id="bokAMM" placeholder="Bok A" min="0" value="0">[mm]
+                                &times;
+                                <input type="number" id="bokBMM" placeholder="Bok B" min="0" value="0">[mm]
+                                <br>
+                                <br>
+                                <div id="bokAM"></div>
+                                &times;
+                                <div id="bokBM"></div>
+                            </div>
+                            <div id="wymiary_okraglego">
+                                Okrągły fi ⌀
+                                <br>
+                                <input type="number" id="promienMM" placeholder="Promien" min="0" value="0">[mm]
+                                <br>
+                                <br>
+                                <div id="promienM"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="description-in-row">
+                            Ilość żył maszyny COS
+                        </td>
+                        <td>
+                            <input type="number" id="zyly" placeholder="Ilość żył" min="0" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="description-in-row">
+                            Liniowa prędkość odlewania [m·min<sup>-1</sup>]
+                        </td>
+                        <td>
+                            <input type="number" id="liniowaPO" placeholder="Prędkość" min="0" value="0">
+                            [m·min<sup>-1</sup>]
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>
+                            <div id="liniowaPOMS"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="description-in-row">
+                            Gęstość stali w stanie stałym [kg·min<sup>-3</sup>]
+                        </td>
+                        <td>
+                            <input type="number" id="gestoscSWSS" placeholder="Gęstość" min="0" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="description-in-row">
+                            Gęstość stali w stanie cieklym [kg·min<sup>-3</sup>]
+                        </td>
+                        <td>
+                            <input type="number" id="gestoscSWSC" placeholder="Gęstość" min="0" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="description-in-row">
+                            Przepływ masowy - urządzenie przemysłowe [kg·min<sup>-3</sup>]
+                        </td>
+                        <td id="przeplywMasResult">
+                            Wynik
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="description-in-row">
+                            Przepływ objętościowy - urządzenie przemysłowe [kg·min<sup>-3</sup>]
+                        </td>
+                        <td id="przeplywObjResult">
+                            Wynik
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="calucateButton" onclick="convertCalculationsToCSV()">Zapisz do pliku CSV</button>
+        </div>
+        <div class="right">
+            <div class="table-section">
+                <table>
+                    <thead>
+                        <p class="count-header">Dane modelowe</p>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Skala modelu S<sub>I</sub></td>
+                            <td colspan="2">
+                                <input type="number" id="skalaSi" placeholder="Skala" min="0" value="0">
+                            </td>
+                        </tr>
+                        <tr rowspan="2">
+                            <td>Przepływ objętościowy cieczy modelowej wody</td>
+                            <td id="przeplywObjCieczyMS"> Wynik [m<sup>3</sup>·s<sup>-1</sup>]</td>
+                            <td id="przeplywObjCieczyDmMin"> Wynik [dm<sup>3</sup>·min<sup>-1</sup>]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="function-section">
+                <button class="calucateButton" onclick="NatezeniePrzeplywuCieczy()">Oblicz</button>
+                <button class="calucateButton" onclick="convertCalculationsToCSV()">Zapisz do pliku CSV</button>
+                <button class="calucateButton" onclick="showHistoricalResultsFromCSV()" id="readFromCSVbutton">Wczytaj dane z pliku CSV</button>
+                <button class="calucateButton" onclick="saveToCSVFile()">Zapisz dane do formatu PDF</button>
+            </div>
         </div>
     </div>
     <!-- Do pokazu obliczeń z pliku csv -->
-    <div class="historical-result">
-        <table>
+    <div id="historical-results">
+        <table class="csv-results-table">
             <thead>
                 <tr>
-                
+                    <th>Przepływ masowy</th>
+                    <th>Przepływ objętościowy</th>
+                    <th>Przepływ objętościowy cieczy modelowej wody</th>
+                    <th>Data</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-
-                </tr>
-                <tr>
-
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <footer>
-        <p>Sekcja {{Alfa}} IPpp40</p>
+        <p>Sekcja 3 IPpp40</p>
     </footer>
 </body>
 
