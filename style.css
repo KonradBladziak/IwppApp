@@ -173,11 +173,20 @@ table, th{
 
 .csv-results-table{
     border: 1px solid black;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 
 #historical-results th{
-    background-color: black;
+    background-color: rgb(83, 83, 83);
     color: azure;
     padding: 10px 10px 10px 10px;
+}
+
+
+.result{
+    background-color: rgb(139, 64, 0);
+    text-align: center;
+    color: azure;
 }

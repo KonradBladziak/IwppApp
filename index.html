@@ -40,9 +40,9 @@
                             <div id="wymiary_kwadratowego">
                                 Kwadratowy/prostokatny
                                 <br>
-                                <input type="number" id="bokAMM" placeholder="Bok A" min="0" value="0">[mm]
+                                <input type="number" id="bokAMM" placeholder="Bok A" min="1" value="1">[mm]
                                 &times;
-                                <input type="number" id="bokBMM" placeholder="Bok B" min="0" value="0">[mm]
+                                <input type="number" id="bokBMM" placeholder="Bok B" min="1" value="1">[mm]
                                 <br>
                                 <br>
                                 <div id="bokAM"></div>
@@ -52,7 +52,7 @@
                             <div id="wymiary_okraglego">
                                 Okrągły fi ⌀
                                 <br>
-                                <input type="number" id="promienMM" placeholder="Promien" min="0" value="0">[mm]
+                                <input type="number" id="promienMM" placeholder="Promien" min="1" value="1">[mm]
                                 <br>
                                 <br>
                                 <div id="promienM"></div>
@@ -64,7 +64,7 @@
                             Ilość żył maszyny COS
                         </td>
                         <td>
-                            <input type="number" id="zyly" placeholder="Ilość żył" min="0" value="0">
+                            <input type="number" id="zyly" placeholder="Ilość żył" min="1" value="1">
                         </td>
                     </tr>
                     <tr>
@@ -72,7 +72,7 @@
                             Liniowa prędkość odlewania [m·min<sup>-1</sup>]
                         </td>
                         <td>
-                            <input type="number" id="liniowaPO" placeholder="Prędkość" min="0" value="0">
+                            <input type="number" id="liniowaPO" placeholder="Prędkość" min="1" value="1">
                             [m·min<sup>-1</sup>]
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <br>
@@ -84,7 +84,7 @@
                             Gęstość stali w stanie stałym [kg·m<sup>-3</sup>]
                         </td>
                         <td>
-                            <input type="number" id="gestoscSWSS" placeholder="Gęstość" min="0" value="0">
+                            <input type="number" id="gestoscSWSS" placeholder="Gęstość" min="1" value="1">
                         </td>
                     </tr>
                     <tr>
@@ -92,31 +92,37 @@
                             Gęstość stali w stanie cieklym [kg·m<sup>-3</sup>]
                         </td>
                         <td>
-                            <input type="number" id="gestoscSWSC" placeholder="Gęstość" min="0" value="0">
+                            <input type="number" id="gestoscSWSC" placeholder="Gęstość" min="1" value="1">
                         </td>
                     </tr>
                     <tr>
                         <td class="description-in-row">
-                            Przepływ masowy - urządzenie przemysłowe [kg·min<sup>-3</sup>]
+                            Przepływ masowy - urządzenie przemysłowe
                         </td>
-                        <td id="przeplywMasResult">
-                            Wynik
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description-in-row">
-                            Przepływ objętościowy - urządzenie przemysłowe [kg·s<sup>-1</sup>]
-                        </td>
-                        <td id="przeplywObjResult">
-                            Wynik
+                        <td id="przeplywMasResult" class="result">
+                            Wynik [kg·min<sup>-1</sup>]
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Wynik [kg·s<sup>-1</sup>]
                         </td>
                     </tr>
                     <tr>
                         <td class="description-in-row">
-                            Przepływ objętościowy - w jednej żyle [kg·s<sup>-1</sup>]
+                            Przepływ objętościowy - urządzenie przemysłowe
                         </td>
-                        <td id="przeplywObjResult">
-                            Wynik
+                        <td id="przeplywObjResult" class="result">
+                            Wynik [m<sup>3</sup>min<sup>-1</sup>]
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Wynik [m<sup>3</sup>s<sup>-1</sup>]
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="description-in-row">
+                            Przepływ objętościowy - w jednej żyle
+                        </td>
+                        <td id="przeplywObjResultInOneVein" class="result">
+                            Wynik [m<sup>3</sup>min<sup>-1</sup>]
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Wynik [m<sup>3</sup>s<sup>-1</sup>]
                         </td>
                     </tr>
                 </tbody>
@@ -130,15 +136,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Skala modelu S<sub>I</sub></td>
+                            <td class="description-in-row">Skala modelu S<sub>I</sub></td>
                             <td colspan="2">
-                                <input type="number" id="skalaSi" placeholder="Skala" min="0" value="0">
+                                <input type="number" id="skalaSi" placeholder="Skala" min="1" value="1">
                             </td>
                         </tr>
                         <tr rowspan="2">
-                            <td>Przepływ objętościowy cieczy modelowej wody</td>
-                            <td id="przeplywObjCieczyMS"> Wynik [m<sup>3</sup>·s<sup>-1</sup>]</td>
-                            <td id="przeplywObjCieczyDmMin"> Wynik [dm<sup>3</sup>·min<sup>-1</sup>]</td>
+                            <td class="description-in-row">Przepływ objętościowy cieczy modelowej wody</td>
+                            <td id="przeplywObjCieczyMS" class="result"> Wynik [m<sup>3</sup>·s<sup>-1</sup>]</td>
+                            <td id="przeplywObjCieczyDmMin" class="result"> Wynik [dm<sup>3</sup>·min<sup>-1</sup>]</td>
                         </tr>
                     </tbody>
                 </table>
@@ -146,8 +152,8 @@
             <div class="function-section">
                 <button class="calucateButton" onclick="NatezeniePrzeplywuCieczy()">Oblicz</button>
                 <button class="calucateButton" onclick="convertCalculationsToCSV()">Zapisz do pliku CSV</button>
-                <button class="calucateButton" onclick="showHistoricalResultsFromCSV()" id="readFromCSVbutton">Wczytaj dane z pliku CSV</button>
-                <button class="calucateButton" onclick="saveToCSVFile()">Zapisz dane do formatu PDF</button>
+                <button class="calucateButton" onclick="showHistoricalResultsFromCSV()" id="readFromCSVbutton">Wczytaj
+                    dane z pliku CSV</button>
             </div>
         </div>
     </div>
@@ -156,14 +162,30 @@
         <table class="csv-results-table">
             <thead>
                 <tr>
-                    <th>Przepływ masowy</th>
-                    <th>Przepływ objętościowy</th>
-                    <th>Przepływ objętościowy cieczy modelowej wody</th>
+                    <th>Przekrój odlewanego wklewka</th>
+                    <th>Wymiary [m]</th>
+                    <th>Ilość żył maszyny COS</th>
+                    <th>Liniowa prędkość odlewania [m·min-1]</th>
+                    <th>Gęstość stali w stanie stałym [kg·m-3]</th>
+                    <th>Gęstość stali w stanie cieklym [kg·m-3]</th>
+                    <th>Przepływ masowy - urządzenie przemysłowe [kg·min-1]</th>
+                    <th>Przepływ objętościowy - urządzenie przemysłowe [m3·min-1]</th>
+                    <th>Przepływ objętościowy - w jednej żyle [m3·min-1]</th>
+                    <th>Skala modelu SI</th>
+                    <th>Przepływ objętościowy - w jednej żyle [m3·s-1]</th>
                     <th>Data</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
