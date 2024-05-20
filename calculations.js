@@ -5,7 +5,7 @@ function PrzekrojWlewka() {
     if (document.getElementById("kwadratowy").checked) {
         var a = document.getElementById("bokAMM").value;
         var b = document.getElementById("bokBMM").value;
-        Pp = a * b;
+        Pp = (a * b) / 1000000;
 
         var aMetry = KonwersjaNaMetry(a);
         var bMetry = KonwersjaNaMetry(b);
@@ -65,8 +65,8 @@ function PrzeliczanieStrumieniaMasowego() {
     let QvS = Qv / 60.0;
 
     var wynikPrzeliczenia = document.getElementById("przeplywObjResult");
-    wynikPrzeliczenia.innerHTML = `${Qv.toFixed(1)} [m<sup>3</sup>min<sup>-1</sup>]`;
-    wynikPrzeliczenia.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvS.toFixed(1)} [m<sup>3</sup>s<sup>-1</sup>]`;
+    wynikPrzeliczenia.innerHTML = `${Qv.toFixed(6)} [m<sup>3</sup>min<sup>-1</sup>]`;
+    wynikPrzeliczenia.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvS.toFixed(6)} [m<sup>3</sup>s<sup>-1</sup>]`;
 
     if (a == 1) {
         QvVeinS = QvS;
@@ -75,8 +75,8 @@ function PrzeliczanieStrumieniaMasowego() {
     }
 
     var wynikePrzeliczeniaNaZyle = document.getElementById("przeplywObjResultInOneVein");
-    wynikePrzeliczeniaNaZyle.innerHTML = `${QvVein.toFixed(1)} [m<sup>3</sup>min<sup>-1</sup>]`
-    wynikePrzeliczeniaNaZyle.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvVeinS.toFixed(1)} [m<sup>3</sup>s<sup>-1</sup>]`
+    wynikePrzeliczeniaNaZyle.innerHTML = `${QvVein.toFixed(6)} [m<sup>3</sup>min<sup>-1</sup>]`
+    wynikePrzeliczeniaNaZyle.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvVeinS.toFixed(6)} [m<sup>3</sup>s<sup>-1</sup>]`
 
     return Qv;
 }
