@@ -1,8 +1,10 @@
-const csvFile = fetch('./temp.csv');
 
-document.getElementById('').document.addEventListener("readFromCSVbutton", function () {
-	showHistoricalResultsFromCSV();
-});
+if (document.getElementById('upload')) {
+	document.getElementById('upload').document.addEventListener("click", function () {
+		showHistoricalResultsFromCSV();
+	});
+}
+
 
 function convertCalculationsToCSV() {
 	let danePrzemysloweMap = new Map();
@@ -79,13 +81,34 @@ function sprawdzPrzekroj() {
 
 
 function showHistoricalResultsFromCSV() {
-	let fileReader = new FileReader();
-	fileReader.addEventListener("loadend", function () {
-
-		document.getElementById('file').innerText = fileReader.result;
-	});
-	fileReader.readAsText(csvFile);
-	console.log(fileReader.result);
+	var fileUpload = document.getElementById("fileUpload");
+	var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+	if (regex.test(fileUpload.value.toLowerCase())) {
+		if (typeof (FileReader)) {
+			var reader = new FileReader();
+			var tbody = document.getElementById('csv-results-table-tbody');
+			reader.onload = function (e) {
+				var rows = e.target.result.split("\r");
+				for (let i = 1; i < rows.length ;i++) {
+					var cells = rows[i].split(";");
+					var row = tbody.insertRow(-1);
+					console.log(rows[i] + " i " + row);
+					if (cells.length > 1) {
+						for (let c of cells) {
+							var cell = row.insertCell(-1);
+							cell.innerHTML += c;
+						}
+					}
+					tbody.appendChild(row);
+				}
+			}
+			reader.readAsText(fileUpload.files[0]);
+		} else {
+			alert("Przeglądarka nie wspiera HTML5.");
+		}
+	} else {
+		alert("Proszę wybrać plik csv.");
+	}
 }
 
 

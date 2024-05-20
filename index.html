@@ -152,8 +152,11 @@
             <div class="function-section">
                 <button class="calucateButton" onclick="NatezeniePrzeplywuCieczy()">Oblicz</button>
                 <button class="calucateButton" onclick="convertCalculationsToCSV()">Zapisz do pliku CSV</button>
-                <button class="calucateButton" onclick="showHistoricalResultsFromCSV()" id="readFromCSVbutton">Wczytaj
-                    dane z pliku CSV</button>
+                <div class="select-button">
+                    <p>Wczytaj dane z pliku CSV</p>
+                    <input type="file" id="fileUpload"/>
+                    <input type="button" id="upload" value="Upload" class="calucateButton" onclick="showHistoricalResultsFromCSV()" />
+                </div>
             </div>
         </div>
     </div>
@@ -176,21 +179,7 @@
                     <th>Data</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tbody id="csv-results-table-tbody">
             </tbody>
         </table>
     </div>

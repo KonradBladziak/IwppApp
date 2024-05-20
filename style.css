@@ -6,6 +6,7 @@ body {
     font-weight: 700;
     font-style: normal;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 150px;
 }
 
 
@@ -150,7 +151,7 @@ table, th{
 }
 
 .calucateButton{
-    width: 50%;
+    width: 30%;
     border-radius: 10%;
 }
 
@@ -173,8 +174,9 @@ table, th{
 
 .csv-results-table{
     border: 1px solid black;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 25px;
+    text-align: center;
+    margin-right: 25px;
 }
 
 
@@ -189,4 +191,21 @@ table, th{
     background-color: rgb(139, 64, 0);
     text-align: center;
     color: azure;
+}
+
+.select-button{
+    border: 0.6px solid rgb(255,129,0);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.select-button p{
+    font-weight: 400;
+    font-size: 1.05rem;
+}
+
+.select-button input{
+    margin-left: 20px;
 }

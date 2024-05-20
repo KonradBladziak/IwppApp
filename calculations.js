@@ -128,15 +128,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    let button = document.getElementById('readFromCSVbutton');
-    console.log(button);
+    let button = document.getElementById('upload');
     let historialResultsDiv = document.getElementById('historical-results');
-    console.log(historialResultsDiv);
-    button.addEventListener('click', function () {
-        if (this.click) {
-            historialResultsDiv.style.visibility = 'visible'
-        }
+    if (historialResultsDiv) {
+        button.addEventListener('click', function () {
+            if (this.click) {
+                historialResultsDiv.style.visibility = 'visible'
+            }
 
-    })
+        })
+    }
+
 
 });
