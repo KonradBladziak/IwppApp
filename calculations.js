@@ -38,7 +38,7 @@ function WydajnoscMasowa() {
     var wynikWydajnosc = document.getElementById("przeplywMasResult");
     wynikWydajnosc.innerHTML = `${Qm.toFixed(1)} [kg·min<sup>-1</sup>]`;
 
-    var liniowaPOMetrSekunda = konwersjaNaSekundy(Vodl);
+    var liniowaPOMetrSekunda = (Vodl * 0.0166666667);
     let resInsec = a * PrzekrojWlewka() * liniowaPOMetrSekunda * Ps;
     console.log(resInsec);
     wynikWydajnosc.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${resInsec.toFixed(1)} [kg·s<sup>-1</sup>]`;
@@ -85,11 +85,11 @@ function NatezeniePrzeplywuCieczy() {
     var SL = document.getElementById("skalaSi").value;
     var Qvprim = Math.sqrt(Math.pow(SL, 5)) * PrzeliczanieStrumieniaMasowego();
     var wynikPrzeplywu = document.getElementById("przeplywObjCieczyMS");
-    wynikPrzeplywu.innerHTML = `${Qvprim.toFixed(1)} [m<sup>3</sup>·s<sup>-1</sup>]`;
+    wynikPrzeplywu.innerHTML = `${Qvprim.toFixed(6)} [m<sup>3</sup>·s<sup>-1</sup>]`;
 
     var zamianaJednostek = Qvprim * (1000 * 60);
     var wynikPrzeplywuZamianaJednostek = document.getElementById("przeplywObjCieczyDmMin");
-    wynikPrzeplywuZamianaJednostek.innerHTML = `${zamianaJednostek.toFixed(1)} [dm<sup>3</sup>·min<sup>-1</sup>]`;
+    wynikPrzeplywuZamianaJednostek.innerHTML = `${zamianaJednostek.toFixed(6)} [dm<sup>3</sup>·min<sup>-1</sup>]`;
 
     return Qvprim;
 }
