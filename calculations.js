@@ -5,7 +5,7 @@ function PrzekrojWlewka() {
     if (document.getElementById("kwadratowy").checked) {
         var a = document.getElementById("bokAMM").value;
         var b = document.getElementById("bokBMM").value;
-        Pp = a * b;
+        Pp = (a * b) / 1000000;
 
         var aMetry = KonwersjaNaMetry(a);
         var bMetry = KonwersjaNaMetry(b);
@@ -38,7 +38,7 @@ function WydajnoscMasowa() {
     var wynikWydajnosc = document.getElementById("przeplywMasResult");
     wynikWydajnosc.innerHTML = `${Qm.toFixed(1)} [kg·min<sup>-1</sup>]`;
 
-    var liniowaPOMetrSekunda = konwersjaNaSekundy(Vodl);
+    var liniowaPOMetrSekunda = (Vodl * 0.0166666667);
     let resInsec = a * PrzekrojWlewka() * liniowaPOMetrSekunda * Ps;
     console.log(resInsec);
     wynikWydajnosc.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${resInsec.toFixed(1)} [kg·s<sup>-1</sup>]`;
@@ -65,8 +65,8 @@ function PrzeliczanieStrumieniaMasowego() {
     let QvS = Qv / 60.0;
 
     var wynikPrzeliczenia = document.getElementById("przeplywObjResult");
-    wynikPrzeliczenia.innerHTML = `${Qv.toFixed(1)} [m<sup>3</sup>min<sup>-1</sup>]`;
-    wynikPrzeliczenia.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvS.toFixed(1)} [m<sup>3</sup>s<sup>-1</sup>]`;
+    wynikPrzeliczenia.innerHTML = `${Qv.toFixed(6)} [m<sup>3</sup>min<sup>-1</sup>]`;
+    wynikPrzeliczenia.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvS.toFixed(6)} [m<sup>3</sup>s<sup>-1</sup>]`;
 
     if (a == 1) {
         QvVeinS = QvS;
@@ -75,8 +75,8 @@ function PrzeliczanieStrumieniaMasowego() {
     }
 
     var wynikePrzeliczeniaNaZyle = document.getElementById("przeplywObjResultInOneVein");
-    wynikePrzeliczeniaNaZyle.innerHTML = `${QvVein.toFixed(1)} [m<sup>3</sup>min<sup>-1</sup>]`
-    wynikePrzeliczeniaNaZyle.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvVeinS.toFixed(1)} [m<sup>3</sup>s<sup>-1</sup>]`
+    wynikePrzeliczeniaNaZyle.innerHTML = `${QvVein.toFixed(6)} [m<sup>3</sup>min<sup>-1</sup>]`
+    wynikePrzeliczeniaNaZyle.innerHTML += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${QvVeinS.toFixed(6)} [m<sup>3</sup>s<sup>-1</sup>]`
 
     return Qv;
 }
@@ -85,11 +85,11 @@ function NatezeniePrzeplywuCieczy() {
     var SL = document.getElementById("skalaSi").value;
     var Qvprim = Math.sqrt(Math.pow(SL, 5)) * PrzeliczanieStrumieniaMasowego();
     var wynikPrzeplywu = document.getElementById("przeplywObjCieczyMS");
-    wynikPrzeplywu.innerHTML = `${Qvprim.toFixed(1)} [m<sup>3</sup>·s<sup>-1</sup>]`;
+    wynikPrzeplywu.innerHTML = `${Qvprim.toFixed(6)} [m<sup>3</sup>·s<sup>-1</sup>]`;
 
     var zamianaJednostek = Qvprim * (1000 * 60);
     var wynikPrzeplywuZamianaJednostek = document.getElementById("przeplywObjCieczyDmMin");
-    wynikPrzeplywuZamianaJednostek.innerHTML = `${zamianaJednostek.toFixed(1)} [dm<sup>3</sup>·min<sup>-1</sup>]`;
+    wynikPrzeplywuZamianaJednostek.innerHTML = `${zamianaJednostek.toFixed(6)} [dm<sup>3</sup>·min<sup>-1</sup>]`;
 
     return Qvprim;
 }
@@ -128,15 +128,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    let button = document.getElementById('readFromCSVbutton');
-    console.log(button);
+    let button = document.getElementById('upload');
     let historialResultsDiv = document.getElementById('historical-results');
-    console.log(historialResultsDiv);
-    button.addEventListener('click', function () {
-        if (this.click) {
-            historialResultsDiv.style.visibility = 'visible'
-        }
+    if (historialResultsDiv) {
+        button.addEventListener('click', function () {
+            if (this.click) {
+                historialResultsDiv.style.visibility = 'visible'
+            }
 
-    })
+        })
+    }
+
 
 });
