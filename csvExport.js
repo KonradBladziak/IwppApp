@@ -11,11 +11,11 @@ function convertCalculationsToCSV() {
 		"Przekrój odlewanego wklewka",
 		"Wymiary",
 		"Ilość żył maszyny COS",
-		"Liniowa prędkość odlewania",
-		"Gęstość stali w stanie stałym",
-		"Gęstość stali w stanie cieklym",
+		"Liniowa prędkość odlewania [m·min-1]",
+		"Gęstość stali w stanie stałym [kg·m-3]",
+		"Gęstość stali w stanie cieklym [kg·m-3]",
 		"Przepływ masowy - urządzenie przemysłowe [kg·min-1]",
-		"Przepływ objętościowy - urządzenie przemysłowe",
+		"Przepływ objętościowy - urządzenie przemysłowe [m3·min-1]",
 		"Przepływ objętościowy - w jednej żyle [m3·min-1]",
 		"Skala modelu SI;Przepływ objętościowy - w jednej żyle [m3·s-1]",
 		"Data"
@@ -38,19 +38,22 @@ function convertCalculationsToCSV() {
 	fileContent+="\n";
 
 	for(let i = 0;i< values.length;i++){
-		fileContent+=values[i].replace(".",",")+";";
+		fileContent+=values[i].replace(/\./g, ',')+";";
 	}
 
 	fileContent=fileContent.slice(0, -1);
-
+	fileContent=fileContent.replace(/\n/g, '\r\n')
 	downloadCSVFile(fileContent);
 
 }
 
 function downloadCSVFile(csvContent) {
 
-	const bom = "\uFEFF";
-	const CSVFile = new Blob([bom + csvContent], { type: "text/csv;charset=utf-8;" });
+	// const bom = "\uFEFF";
+	// const CSVFile = new Blob([bom + csvContent], { type: "text/csv;charset=utf-8;" });
+
+
+	const CSVFile = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
 
 	let temp_link = document.createElement('a');
 
