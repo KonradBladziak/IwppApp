@@ -1,4 +1,3 @@
-
 if (document.getElementById('upload')) {
 	document.getElementById('upload').document.addEventListener("click", function () {
 		showHistoricalResultsFromCSV();
@@ -6,39 +5,46 @@ if (document.getElementById('upload')) {
 }
 
 
+
 function convertCalculationsToCSV() {
-	let danePrzemysloweMap = new Map();
-
-	let przekroj = sprawdzPrzekroj();
-	danePrzemysloweMap.set(0, przekroj);
-
-	let danePrzemysloweKlucz = [
+	let headers= [
 		"Przekrój odlewanego wklewka",
-		"Wymiary odlewanego wklewka [mm]",
-		"Wymiary odlewanego wklewka [m]",
+		"Wymiary",
 		"Ilość żył maszyny COS",
-		"Liniowa prędkość odlewania [m·min⁻¹]",
-		"Gęstość stali w stanie stałym [kg·min⁻³]",
-		"Gęstość stali w stanie cieklym [kg·min⁻³]",
-		"Przepływ masowy - urządzenie przemysłowe [kg·min⁻³]",
-		"Przepływ objętościowy - urządzenie przemysłowe [kg·min⁻³]"
-	];
+		"Liniowa prędkość odlewania",
+		"Gęstość stali w stanie stałym",
+		"Gęstość stali w stanie cieklym",
+		"Przepływ masowy - urządzenie przemysłowe [kg·min-1]",
+		"Przepływ objętościowy - urządzenie przemysłowe",
+		"Przepływ objętościowy - w jednej żyle [m3·min-1]",
+		"Skala modelu SI;Przepływ objętościowy - w jednej żyle [m3·s-1]",
+		"Data"
+	]
 
+	let values= [
+		pobierzTypBryly(),pobierzWymiaryM(),pobierzIloscZylCOS(),pobierzLiniowaPredkoscOdlewaniaMmin(),
+		pobierzGestoscStala(),pobierzGestoscCiekla(),pobierzPrzeplywMasowy(),pobierzPrzeplywObjetosciowyUP(),
+		pobierzPrzeplywObjetosciowyJZ(),pobierzSkaleModelu(),pobierzPrzeplywCieczyMW(),pobierzDate()
+	]
 
-	let danePrzemysloweWartosc = [przekroj, "test", "", "", "", "", "", "", ""];
+	console.log(values);
+	
+	var fileContent="";
 
-	if (danePrzemysloweKlucz.length !== danePrzemysloweWartosc.length) {
-		console.error("Długości tablic danePrzemysloweColTyt i danePrzemysloweColWart są różne.");
-		return;
+	for(let i = 0;i< headers.length;i++){
+		fileContent+=headers[i]+";";
+	}	
+
+	fileContent+="\n";
+
+	for(let i = 0;i< values.length;i++){
+		fileContent+=values[i].replace(".",",")+";";
 	}
 
-	let csvContent = "";
+	fileContent=fileContent.slice(0, -1);
 
-	for (let i = 0; i < danePrzemysloweKlucz.length; i++) {
-		csvContent += `"${danePrzemysloweKlucz[i]}";"${danePrzemysloweWartosc[i]}"\n`;
-	}
+	downloadCSVFile(fileContent);
 
-	downloadCSVFile(csvContent);
 }
 
 function downloadCSVFile(csvContent) {
@@ -76,6 +82,7 @@ function sprawdzPrzekroj() {
 	else if (przekrojOkragly) {
 		return "Okrągły";
 	}
+
 	return "";
 }
 
@@ -111,6 +118,97 @@ function showHistoricalResultsFromCSV() {
 	}
 }
 
+function pobierzTypBryly(){
+
+	if(document.getElementById("kwadratowy").checked){
+		return "Kwadratowy/Prostokątny";
+	}
+
+	if(document.getElementById("okragly").checked){
+		return "Okrągły";
+	}
+}
+
+function pobierzWymiaryM(){
+
+	if(document.getElementById("kwadratowy").checked){
+		let varA = document.getElementById("bokAM").textContent.replace(" [m]", "");
+		let varB = document.getElementById("bokBM").textContent.replace(" [m]", "");
+		return varA+"x"+varB;
+	}
+
+	if(document.getElementById("okragly").checked){
+		let varA = document.getElementById("promienM").textContent.replace(" [m]", "");
+		return varA;
+	}
+}
+
+function pobierzIloscZylCOS(){
+	let varA=document.getElementById("zyly").value;
+	return varA;
+}
+
+function pobierzLiniowaPredkoscOdlewaniaMmin(){
+	let varA = document.getElementById("liniowaPO").value;
+	return varA;
+}
 
 
+function pobierzGestoscStala(){
+	let varA = document.getElementById("gestoscSWSS").value;
+	return varA;
+}
 
+function pobierzGestoscCiekla(){
+	let varA = document.getElementById("gestoscSWSC").value;
+	return varA;
+}
+
+function pobierzPrzeplywMasowy(){
+	let varA = document.getElementById("przeplywMasResult").textContent.split(" [kg·min-1]        ")[0];
+	return varA;
+}
+
+function pobierzPrzeplywObjetosciowyUP(){
+	let varA = document.getElementById("przeplywObjResult").textContent.split(" [m3min-1]        ")[0];
+	return varA;
+}
+
+function pobierzPrzeplywObjetosciowyJZ(){
+	let varA = document.getElementById("przeplywObjResultInOneVein").textContent.split(" [m3min-1]        ")[0];
+	return varA;
+}
+
+function pobierzSkaleModelu(){
+	let varA = document.getElementById("skalaSi").value;
+	return varA;
+}
+
+function pobierzPrzeplywCieczyMW(){
+	let varA = document.getElementById("przeplywObjCieczyMS").textContent.replace(" [m3·s-1]","");
+	return varA;
+}
+
+
+function pobierzDate() {
+    // Utworzenie nowego obiektu Date reprezentującego bieżącą datę i czas
+    let today = new Date();
+
+    // Pobranie roku
+    let year = today.getFullYear();
+
+    // Pobranie miesiąca (miesiące są indeksowane od 0, więc dodajemy 1)
+    let month = today.getMonth() + 1;
+
+    // Pobranie dnia miesiąca
+    let day = today.getDate();
+
+    // Dodanie zer wiodących do miesiąca i dnia, jeśli jest to konieczne
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+
+    // Sformatowanie daty w formacie YYYY-MM-DD
+    let formattedDate = year + '-' + month + '-' + day;
+
+    return formattedDate;
+}

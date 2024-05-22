@@ -119,6 +119,22 @@ td,th {
 }
 
 
+.calucateButton2 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: transparent;
+    border: 0.5px solid rgb(255,129,0);
+    padding: 5px 5px 5px 5px;
+    font-size: 0.9rem;
+}
+
+.calucateButton2:hover {
+    background-color: rgb(255,129,0);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 table, th{
     border: 2px solid black;
     border-collapse: collapse;

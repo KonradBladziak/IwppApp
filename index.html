@@ -151,11 +151,11 @@
             </div>
             <div class="function-section">
                 <button class="calucateButton" onclick="NatezeniePrzeplywuCieczy()">Oblicz</button>
-                <button class="calucateButton" onclick="convertCalculationsToCSV()">Zapisz do pliku CSV</button>
+                <input type="button" id="save" value="Pobierz wynik" class="calucateButton" onclick="convertCalculationsToCSV()" />
                 <div class="select-button">
                     <p>Wczytaj dane z pliku CSV</p>
                     <input type="file" id="fileUpload"/>
-                    <input type="button" id="upload" value="Upload" class="calucateButton" onclick="showHistoricalResultsFromCSV()" />
+                    <input type="button" id="upload" value="Wczytaj" class="calucateButton" onclick="showHistoricalResultsFromCSV()" />
                 </div>
             </div>
         </div>
